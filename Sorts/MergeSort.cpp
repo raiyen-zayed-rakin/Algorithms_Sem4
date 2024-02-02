@@ -60,14 +60,16 @@ void merge(int arr[], int start, int end){
 }
 
 void mergeSort(int arr[], int start, int end){
+  ///base case
   if(start >= end){
     return;
   }
   int mid = start + (end - start)/2;
-
+  //Left array
   mergeSort(arr, start, mid);
+  //Right array
   mergeSort(arr, mid+1, end);
-
+  //Main merge after getting out of each recursion** 
   merge(arr, start, end);
 }
 
@@ -75,6 +77,8 @@ int main(){
   int n;
   cout<<"Enter the size of your array : ";
   cin>>n;
+
+  cout<<endl;
 
   int arr[n];
 
@@ -93,6 +97,7 @@ int main(){
   }
   cout<<endl;
   
+  //call
   mergeSort(arr, 0, n-1);
 
   cout<<"After Merge Sorting : ";
