@@ -33,7 +33,12 @@ void LinearSearch(int arr[], int size, int target){
   }
 }
 void BinarySearch(int arr[], int size, int target){
-  insertionSort(arr, size);
+  //manual sort
+  //insertionSort(arr, size);
+  
+  //Build-in library sort
+  sort(arr, arr+size);
+
   cout<<"New sortted array : "<<endl;
   for (int i = 0; i < size; i++)
   {
