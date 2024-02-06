@@ -3,10 +3,10 @@
 using namespace std;
 
 int partition(int arr[], int start, int end){
-  int pivot = arr[start];
+  int pivot = arr[end];
 
   int count = 0;
-  for (int i = start+1; i <=end; i++)
+  for (int i = start; i < end; i++)
   {
     if(pivot >= arr[i]){
       count++;
@@ -16,9 +16,9 @@ int partition(int arr[], int start, int end){
   // int temp = arr[pivotIndex];
   // arr[pivotIndex] = pivot;
   // pivot = temp;
-  swap(arr[pivotIndex], arr[start]);
+  swap(arr[pivotIndex], arr[end]);
 
-  //left-rightpart 
+  //left-right-part 
   int i = start;
   int j = end;
 
@@ -38,7 +38,6 @@ int partition(int arr[], int start, int end){
     }
   }
   return pivotIndex;
-  
 }
 
 void QuickSort(int arr[], int start, int end){
@@ -51,7 +50,6 @@ void QuickSort(int arr[], int start, int end){
   QuickSort(arr, start, p-1);
   //right part
   QuickSort(arr, p+1, end);
-
 }
 
 int main(){
@@ -64,9 +62,6 @@ int main(){
   {
     cout<<arr[i]<<" ";
   }
-  
-
-
 
   return 0;
 }
