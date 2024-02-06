@@ -4,7 +4,19 @@ using namespace std;
 
 int partition(int arr[], int start, int end){
   int pivot = arr[end];
+  int i = start - 1;
 
+  for (int j = start; j < end; j++){
+    if(arr[j]<pivot){
+      i++;
+      swap(arr[i], arr[j]);
+    }
+  }
+  swap(arr[i+1] , arr[end]);
+  
+  return i+1;
+  
+  /*
   int count = 0;
   for (int i = start; i < end; i++)
   {
@@ -38,6 +50,8 @@ int partition(int arr[], int start, int end){
     }
   }
   return pivotIndex;
+  */
+
 }
 
 void QuickSort(int arr[], int start, int end){

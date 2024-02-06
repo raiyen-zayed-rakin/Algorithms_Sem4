@@ -38,7 +38,6 @@ int partition(int arr[], int start, int end){
     }
   }
   return pivotIndex;
-  
 }
 
 void QuickSort(int arr[], int start, int end){
