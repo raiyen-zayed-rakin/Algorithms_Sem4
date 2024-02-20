@@ -1,6 +1,8 @@
 #include<iostream>
 using namespace std;
-
+/*
+Write a program that takes the sales unit price and sales quantity of several items(5 items) and calculates the total sales of seven days and the average sales quantity. All input values must be greater than or equal to 0 and less than or equal to 1,000. In addition, the number of pairs of sales unit and sales quantity does not exceed 100.  
+*/
 const int MAX_ITEMS = 5;
 const int MAX_DAYS = 7;
 const int MAX_PAIRS = 100;
