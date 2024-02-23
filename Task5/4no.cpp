@@ -8,7 +8,7 @@ class Student {
     string id;
     int age;
     string department;
-    float sgpa[2][2];
+    float sgpa[8][5];
 };
  
 float calculateSGPA(float grades[], int numCourses) {
@@ -32,8 +32,8 @@ bool isEligibleForWaiver(float sgpa) {
 }
  
 int main() {
-    Student students[2];
-    for (int i = 0; i < 2; i++) {
+    Student students[10];
+    for (int i = 0; i < 10; i++) {
         cout<<"For student "<<i + 1<<endl;
         cout<<"Enter Name: ";
         cin>>students[i].name;
@@ -43,16 +43,16 @@ int main() {
         cin>>students[i].age;
         cout<<"Enter Department: ";
         cin>>students[i].department;
-        for(int m = 0; m < 2; m++){
+        for(int m = 0; m < 8; m++){
             cout << "Enter SGPA for Semester "<<m + 1<<endl;
-            for (int n = 0; n < 2; n++) {
+            for (int n = 0; n < 5; n++) {
                 cout<<"Enter grade for Course "<<n + 1 <<": ";
                 cin>>students[i].sgpa[m][n];
             }
         }
         cout<<endl;
     }
-    for (int i = 0; i < 2; i++) {
+    for (int i = 0; i < 10; i++) {
         float SGPA=calculateSGPA(students[i].sgpa[i], 5);
         float CGPA=calculateCGPA(students, i + 1);
         bool waiverEligibility=isEligibleForWaiver(SGPA);
@@ -64,7 +64,7 @@ int main() {
         }
         else{
           cout << "Eligible for 25% Waiver: No"<<endl<<endl;  
-        }
+        } 
     }
  
     return 0;
