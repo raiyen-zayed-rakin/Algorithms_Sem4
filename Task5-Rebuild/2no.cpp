@@ -1,7 +1,8 @@
 #include <iostream>
 using namespace std;
-struct Product {
-    char name[20];
+class Product {
+    public:
+    string name;
     int weight;
     int price;
     double valuePerUnit;
