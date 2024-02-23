@@ -95,12 +95,12 @@ void calculatedSum(int ammount){
 }
 
 void calculationSUM(int ammount){
-  
+
 }
 
 int main(){
   int ammount;
-  cout<<"Enter the ammout : ";
+  cout<<"Enter the ammount : ";
   cin>>ammount;
   selectedNotes(ammount);
 

@@ -4,63 +4,31 @@ Suppose, You have gone to super shop to buy some groceries and your shopping bag
 
 #include <iostream>
 using namespace std;
-class Product {
+
+class product{
     public:
     string name;
     int weight;
     int price;
-    double valuePerUnit;
+    double perUnitValue;
 };
 
-bool compare(Product p1, Product p2) {
-    return p1.valuePerUnit > p2.valuePerUnit;
-}
-
 int main() {
-    const int bagCapacity = 10;
-    const int numProducts = 4; 
-    Product products[numProducts] = {
+    int bag_capacity = 10;
+    cout<<"Your knapsack capacity : "<<bag_capacity<<endl<<endl;
+    cout<<"Available products : "<<endl<<endl;
+    cout<<"1. 3kg Rice - 470tk."<<endl<<endl;
+    cout<<"2. 2kg Rice - 230tk."<<endl<<endl;
+    cout<<"3. 3kg Rice - 360tk."<<endl<<endl;
+    cout<<"4. 5kg Rice - 500tk."<<endl<<endl;
+
+    product products[4] = {
         {"rice", 3, 470, 0},
         {"salt", 2, 230, 0},
         {"sugar", 3, 360, 0},
-        {"onion", 5, 500, 0}
+        {"onion", 5, 500, 0}  
     };
 
-    for (int i = 0; i < numProducts; i++) {
-        products[i].valuePerUnit =(products[i].price) / products[i].weight;
-    }
-    for (int i = 0; i < numProducts - 1; i++) {
-        for (int j = i + 1; j < numProducts; j++) {
-            if (products[i].valuePerUnit < products[j].valuePerUnit) {
-                Product temp = products[i];
-                products[i] = products[j];
-                products[j] = temp;
-            }
-        }
-    }
-
-    double totalWeight = 0;
-    double totalPrice = 0;
-
-    cout << "Selected items:" << endl;
-
-    for (int i = 0; i < numProducts; i++) {
-        if (totalWeight + products[i].weight <= bagCapacity) {
-            cout << products[i].name << " - " << products[i].weight << "kg - " << products[i].price << "tk" << endl;
-            totalWeight += products[i].weight;
-            totalPrice += products[i].price;
-        } else {
-            double remainingCapacity = bagCapacity - totalWeight;
-            double fraction = remainingCapacity / products[i].weight;
-            cout << products[i].name << " - " << remainingCapacity << " (fractional) kg - " << fraction * products[i].price << "(fractional) tk" << endl;
-            totalWeight += remainingCapacity;
-            totalPrice += fraction * products[i].price;
-            break;
-        }
-    }
-
-    cout << "Total value: " << totalPrice << "tk" << endl;
-    cout<< "Total weight: " << totalWeight << "kg" << endl;
-
+    
     return 0;
 }
