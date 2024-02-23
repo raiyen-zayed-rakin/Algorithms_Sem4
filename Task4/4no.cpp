@@ -1,3 +1,4 @@
+// Write a program to to access and calculate the summation of all the elements of any diagonal for a 2d array. 
 #include <iostream>
 using namespace  std;
 

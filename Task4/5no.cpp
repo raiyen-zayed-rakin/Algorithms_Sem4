@@ -1,3 +1,4 @@
+//Write a program to do addition, subtraction, multiplication of  transpose matrices of two matrices. 
 #include <iostream>
 
 using namespace std;

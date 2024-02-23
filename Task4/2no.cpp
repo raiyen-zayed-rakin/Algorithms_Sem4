@@ -1,3 +1,4 @@
+//Write a program to implement the algorithm of Counting sort.  
 #include<iostream>
 
 using namespace std;
