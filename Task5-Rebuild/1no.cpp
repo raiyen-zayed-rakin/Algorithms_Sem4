@@ -2,74 +2,75 @@
 Suppose, you have to pay out an amount of 1887 taka to your friend and you have the following supply of notes: 1000, 500, 200, 100, 50, 20, 10, 5, 2, 1. How will you pay back using least number of notes? Write a program to display the selected notes.
 */
 #include<iostream>
-
 using namespace std;
-
+//manual/ greedy /O(n)
 void selectedNotes(int ammount){
   int numOfNotes = 0;
+  int Notes[10] = {1000, 500, 200, 100, 50, 20, 10, 5, 2, 1};
   int selectedNote[10] = {0};
-  int temp;
-  while(temp >= 0){
-    temp = ammount;
-    if(temp >= 1000 ){
+  int temp = ammount;
+  while(temp != 0){
+    if(temp >= 1000){
       temp -= 1000;
       selectedNote[0]++;
       numOfNotes++;
     }
-    else if(temp >= 500 ){
+    else if(temp >= 500){
       temp -= 500;
       selectedNote[1]++;
       numOfNotes++;
     }    
-    else if(temp >= 200 ){
+    else if(temp >= 200){
       temp -= 200;
       selectedNote[2]++;
       numOfNotes++;
     }    
-    else if(temp >= 100 ){
+    else if(temp >= 100){
       temp -= 100;
       selectedNote[3]++;
       numOfNotes++;
     }    
-    else if(temp >= 50 ){
+    else if(temp >= 50){
       temp -= 50;
       selectedNote[4]++;
       numOfNotes++;
     }    
-    else if(temp >= 20 ){
+    else if(temp >= 20){
       temp -= 20;
       selectedNote[5]++;
       numOfNotes++;
     }    
-    else if(temp >= 10 ){
+    else if(temp >= 10){
       temp -= 10;
       selectedNote[6]++;
       numOfNotes++;
     }    
-    else if(temp >= 5 ){
+    else if(temp >= 5){
       temp -= 5;
       selectedNote[7]++;
       numOfNotes++;
     }    
-    else if(temp >= 2 ){
+    else if(temp >= 2){
       temp -= 2;
       selectedNote[8]++;
+      numOfNotes++;
+    }
+    else if(temp >= 1){
+      temp -= 1;
+      selectedNote[9]++;
       numOfNotes++;
     }
   }
 
   cout<<"Number of notes used : "<<numOfNotes<<endl;
-  cout<<"Number of 1000 bills used : "<<selectedNote[0]<<endl;
-  cout<<"Number of 500 bills used : "<<selectedNote[1]<<endl;
-  cout<<"Number of 200 bills used : "<<selectedNote[2]<<endl;
-  cout<<"Number of 100 bills used : "<<selectedNote[3]<<endl;
-  cout<<"Number of 50 bills used : "<<selectedNote[4]<<endl;
-  cout<<"Number of 20 bills used : "<<selectedNote[5]<<endl;
-  cout<<"Number of 10 bills used : "<<selectedNote[6]<<endl;
-  cout<<"Number of 5 bills used : "<<selectedNote[7]<<endl;
-  cout<<"Number of 2 bills used : "<<selectedNote[8]<<endl;
+  for (int i = 0; i < 10; i++)
+  {
+    cout<<"Number of "<<Notes[i]<<" bills used : "<<selectedNote[i]<<endl;
+  }
+  
 }
 
+//O(n^2)
 void calculatedSum(int ammount){
   int s = ammount;
   int ammountNote = 0;
@@ -85,18 +86,25 @@ void calculatedSum(int ammount){
       s = s - Notes[i];
     }  
   }
-  
   cout<<"Number of Notes : "<<ammountNote<<endl;
   for (int i = 0; i < 10; i++)
   {
     cout<<"Number of "<<Notes[i]<<" bills used : "<<NumOfNote[i]<<endl;
     
   }
+}
 
+void calculationSUM(int ammount){
+  
 }
 
 int main(){
-  int ammount = 2887;
-  calculatedSum(ammount);
+  int ammount;
+  cout<<"Enter the ammout : ";
+  cin>>ammount;
+  selectedNotes(ammount);
+
+
+
   return 0;
 }
