@@ -36,7 +36,7 @@ int main() {
     bool isMainDiagonal;
     cout << "Enter a option : "<<endl;
     cout<<"1. for main/left diagonal."<<endl;
-    cout<<"0. for anti/right diagonal: ";
+    cout<<"0. for anti/right diagonal: "<<endl;
     cin >> isMainDiagonal;
 
     int sum = diaSum(arr, size, isMainDiagonal);
