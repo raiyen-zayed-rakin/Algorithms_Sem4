@@ -2,56 +2,19 @@
 
 using namespace std;
 
-int partition(int arr[], int start, int end){
-  int pivot = arr[end];
-  int i = start - 1;
+int partition(int arr[], int low, int high){
+  int pivot = arr[high];
+  int i = low;
 
-  for (int j = start; j < end; j++){
+  for (int j = low+1; j <= high; j++){
     if(arr[j]<pivot){
       i++;
       swap(arr[i], arr[j]);
     }
   }
-  swap(arr[i+1] , arr[end]);
+  swap(arr[i] , arr[high]);
   
-  return i+1;
-  
-  /*
-  int count = 0;
-  for (int i = start; i < end; i++)
-  {
-    if(pivot >= arr[i]){
-      count++;
-    }
-  }
-  int pivotIndex = start + count;
-  // int temp = arr[pivotIndex];
-  // arr[pivotIndex] = pivot;
-  // pivot = temp;
-  swap(arr[pivotIndex], arr[end]);
-
-  //left-right-part 
-  int i = start;
-  int j = end;
-
-  while(i<pivotIndex && j>pivotIndex){
-    while (arr[i]<=pivot)
-    {
-      i++;
-    }
-    while (arr[j]>pivot)
-    {
-      j--;
-    }
-    if(i<pivotIndex && j>pivotIndex){
-      swap(arr[i], arr[j]);
-      i++;
-      j--;
-    }
-  }
-  return pivotIndex;
-  */
-
+  return i;
 }
 
 void QuickSort(int arr[], int start, int end){
@@ -77,5 +40,6 @@ int main(){
     cout<<arr[i]<<" ";
   }
 
+  int arr[19] = {0};
   return 0;
 }
