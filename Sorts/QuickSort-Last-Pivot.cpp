@@ -4,11 +4,11 @@ using namespace std;
 
 int partition(int arr[], int low, int high){
   int pivot = arr[high];
-  int i = low;
+  int i = high;
 
-  for (int j = low+1; j <= high; j++){
-    if(arr[j]<pivot){
-      i++;
+  for (int j = high-1; j >= low; j--){
+    if(arr[j]>pivot){
+      i--;
       swap(arr[i], arr[j]);
     }
   }
@@ -40,6 +40,6 @@ int main(){
     cout<<arr[i]<<" ";
   }
 
-  int arr[19] = {0};
+ 
   return 0;
 }

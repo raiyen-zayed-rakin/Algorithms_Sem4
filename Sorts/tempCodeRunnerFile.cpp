@@ -1,3 +1,1 @@
-nt[arr[i]]--;
-    int temp = ActualCount[arr[i]];
-    result[temp] = arr[i];
+ int arr[19] = {0};
