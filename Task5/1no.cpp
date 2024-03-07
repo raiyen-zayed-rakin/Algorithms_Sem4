@@ -9,7 +9,8 @@ void selectedNotes(int ammount){
   int numOfNotes = 0;
   int selectedNote[10] = {0};
   int temp;
-  while(temp >= 0){
+  int Notes[10] = {1000, 500, 200, 100, 50, 20, 10, 5, 2, 1};
+  while(temp > 0){
     temp = ammount;
     if(temp >= 1000 ){
       temp -= 1000;
@@ -57,17 +58,12 @@ void selectedNotes(int ammount){
       numOfNotes++;
     }
   }
-
-  cout<<"Number of notes used : "<<numOfNotes<<endl;
-  cout<<"Number of 1000 bills used : "<<selectedNote[0]<<endl;
-  cout<<"Number of 500 bills used : "<<selectedNote[1]<<endl;
-  cout<<"Number of 200 bills used : "<<selectedNote[2]<<endl;
-  cout<<"Number of 100 bills used : "<<selectedNote[3]<<endl;
-  cout<<"Number of 50 bills used : "<<selectedNote[4]<<endl;
-  cout<<"Number of 20 bills used : "<<selectedNote[5]<<endl;
-  cout<<"Number of 10 bills used : "<<selectedNote[6]<<endl;
-  cout<<"Number of 5 bills used : "<<selectedNote[7]<<endl;
-  cout<<"Number of 2 bills used : "<<selectedNote[8]<<endl;
+  cout<<"Number of Notes : "<<numOfNotes<<endl;
+  for (int i = 0; i < 10; i++)
+  {
+    cout<<"Number of "<<Notes[i]<<" bills used : "<<selectedNote[i]<<endl;
+    
+  }
 }
 
 void calculatedSum(int ammount){
@@ -97,6 +93,7 @@ void calculatedSum(int ammount){
 
 int main(){
   int ammount = 2887;
-  calculatedSum(ammount);
+  selectedNotes(ammount);
+  //calculatedSum(ammount);
   return 0;
 }
