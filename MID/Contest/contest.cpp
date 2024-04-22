@@ -13,34 +13,25 @@ int main(){
 
   while (t--)
   {
-    int a,b,c;
-    cin>>a>>b>>c;
-    int maxi = max(max(a,b),c);
+    int n;
+    cin>>n;
+    int arr[n];
+    int res1 = 0;
+    for (int i = 0; i < n; i++)
+    {
+      cin>>arr[i];
+    }
 
-    if(maxi == a){
-      if(a*a == (b*b + c*c)){
-        cout<<"YES"<<endl;
-      }
-      else{
-        cout<<"NO"<<endl;
-      }
+    int freq[n] ={0};
+    for(int i : arr){
+      freq[i]++;
     }
-    else if(maxi == b){
-      if(b*b == (a*a + c*c)){
-        cout<<"YES"<<endl;
-      }
-      else{
-        cout<<"NO"<<endl;
-      }
+    int mostF = 0;
+    for(int cnt : freq){
+      mostF = max(mostF, cnt);
     }
-    else if(maxi == c){
-      if(c*c == (b*b + a*a)){
-        cout<<"YES"<<endl;
-      }
-      else{
-        cout<<"NO"<<endl;
-      }
-    }
+    int res = n - mostF;
+    cout<<res<<endl;
   }
   
 
