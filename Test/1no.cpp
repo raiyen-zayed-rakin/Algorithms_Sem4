@@ -1,7 +1,127 @@
-#include<iostream>
+#include <iostream>
+#include <vector>
+#include <stack>
+#include <string>
+#include <algorithm> 
 
 using namespace std;
 
-int main(){
-  return 0;
+// Function to perform DFS traversal and find the path from source to destination
+vector<char> findPathDFS(vector<vector<int>>& graph, int source, int destination, const vector<char>& vertices) {
+    int V = graph.size();
+    vector<bool> visited(V, false);
+    vector<int> parent(V, -1);
+    stack<int> st;
+    vector<char> path;
+
+    visited[source] = true;
+    st.push(source);
+
+    while (!st.empty()) {
+        int u = st.top();
+        st.pop();
+
+        if (u == destination) {
+            // Build path from destination to source
+            while (parent[u] != -1) {
+                path.push_back(vertices[u]);
+                u = parent[u];
+            }
+            path.push_back(vertices[source]); // Add source to path
+            reverse(path.begin(), path.end()); // Reverse path to get source to destination
+            return path;
+        }
+
+        for (int v = 0; v < V; ++v) {
+            if (graph[u][v] && !visited[v]) {
+                visited[v] = true;
+                parent[v] = u;
+                st.push(v);
+            }
+        }
+    }
+
+    return path; // If no path is found
+}
+
+int main() {
+    int numVertices;
+    cout << "Enter the number of vertices in the graph: ";
+    cin >> numVertices;
+
+    vector<char> vertices(numVertices);
+
+    cout << "Enter the labels for the vertices:" << endl;
+    for (int i = 0; i < numVertices; ++i) {
+        cin >> vertices[i];
+    }
+
+    vector<vector<int>> graph(numVertices, vector<int>(numVertices, 0));
+
+    cout << "Enter the adjacency matrix of the graph (0 for no edge, 1 for an edge):" << endl;
+    for (int i = 0; i < numVertices; ++i) {
+        for (int j = 0; j < numVertices; ++j) {
+            cin >> graph[i][j];
+        }
+    }
+
+    cout << "Adjacency Matrix of the Graph:" << endl;
+    for (const auto& row : graph) {
+        for (int val : row) {
+            cout << val << " ";
+        }
+        cout << endl;
+    }
+
+    char sourceVertex, destinationVertex;
+    cout << "Enter the source vertex (A to K): ";
+    cin >> sourceVertex;
+    cout << "Enter the destination vertex (A to K): ";
+    cin >> destinationVertex;
+
+    int sourceIndex = -1, destinationIndex = -1;
+    for (int i = 0; i < numVertices; ++i) {
+        if (vertices[i] == sourceVertex) {
+            sourceIndex = i;
+        }
+        if (vertices[i] == destinationVertex) {
+            destinationIndex = i;
+        }
+    }
+
+    if (sourceIndex == -1 || destinationIndex == -1) {
+        cout << "Invalid source or destination vertex entered. Please enter valid vertices." << endl;
+        return 1;
+    }
+    //adjacency matrix
+    cout << "Adjacency Matrix of the Graph:" << endl;
+    cout << "  ";
+    for (int i = 0; i < numVertices; ++i) {
+        cout << vertices[i] << " ";
+    }
+    cout << endl;
+
+    // Display matrix elements with row labels
+    for (int i = 0; i < numVertices; ++i) {
+        cout << vertices[i] << " ";
+        for (int j = 0; j < numVertices; ++j) {
+            cout << graph[i][j] << " ";
+        }
+        cout << endl;
+    }
+    // Find path using DFS
+    vector<char> path = findPathDFS(graph, sourceIndex, destinationIndex, vertices);
+
+    // Show path
+    cout << "Path from " << sourceVertex << " to " << destinationVertex << ": ";
+    if (!path.empty()) {
+        for (char vertex : path) {
+            cout << vertex << " ";
+        }
+    } else {
+        cout << "No path found.";
+    }
+    cout << endl;
+
+    return 0;
 }
