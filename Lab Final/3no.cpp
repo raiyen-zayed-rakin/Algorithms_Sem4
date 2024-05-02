@@ -6,7 +6,7 @@
 
 using namespace std;
 
-// Function to perform BFS traversal and find the path from source to destination
+//BFS
 vector<char> findPathBFS(vector<vector<int>>& graph, int source, int destination, const vector<char>& vertices) {
     int V = graph.size();
     vector<bool> visited(V, false);
@@ -22,13 +22,12 @@ vector<char> findPathBFS(vector<vector<int>>& graph, int source, int destination
         q.pop();
 
         if (u == destination) {
-            // Build path from destination to source
             while (parent[u] != -1) {
                 path.push_back(vertices[u]);
                 u = parent[u];
             }
-            path.push_back(vertices[source]); // Add source to path
-            reverse(path.begin(), path.end()); // Reverse path to get source to destination
+            path.push_back(vertices[source]); 
+            reverse(path.begin(), path.end()); 
             return path;
         }
 
@@ -41,7 +40,7 @@ vector<char> findPathBFS(vector<vector<int>>& graph, int source, int destination
         }
     }
 
-    return path; // If no path is found
+    return path; 
 }
 
 int main() {
@@ -65,7 +64,6 @@ int main() {
         }
     }
 
-    // Display adjacency matrix
     cout << "Adjacency Matrix of the Graph:" << endl;
     cout << "  ";
     for (int i = 0; i < numVertices; ++i) {
@@ -73,7 +71,6 @@ int main() {
     }
     cout << endl;
 
-    // Display matrix elements with row labels
     for (int i = 0; i < numVertices; ++i) {
         cout << vertices[i] << " ";
         for (int j = 0; j < numVertices; ++j) {
